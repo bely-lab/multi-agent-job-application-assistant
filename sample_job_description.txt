@@ -1,0 +1,9 @@
+Job Title: Junior Data Analyst
+
+Requirements:
+- Strong Python and SQL skills
+- Experience with data cleaning and visualization
+- Ability to communicate insights clearly
+- Experience with dashboards is a plus
+- Machine learning knowledge is a bonus
+- Bachelor’s or Master’s degree in a relevant field

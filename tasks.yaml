@@ -1,0 +1,31 @@
+extract_job_requirements:
+  description: >
+    Read the job description and extract:
+    - required skills
+    - preferred skills
+    - education or experience expectations
+    - communication expectations
+    Return the result in clear bullet points.
+  expected_output: >
+    A structured requirements summary in bullet points.
+  agent: job_researcher
+
+review_cv_against_job:
+  description: >
+    Compare the candidate CV with the extracted job requirements.
+    Identify:
+    - matching strengths
+    - missing skills
+    - weak or unclear points
+    - concrete recommendations
+  expected_output: >
+    A structured CV evaluation with strengths, gaps, and recommendations.
+  agent: cv_reviewer
+
+write_cover_letter:
+  description: >
+    Using the job requirements summary and CV review, write a tailored cover letter
+    for the candidate applying to this role.
+  expected_output: >
+    A professional cover letter, around 200 to 300 words.
+  agent: cover_letter_writer

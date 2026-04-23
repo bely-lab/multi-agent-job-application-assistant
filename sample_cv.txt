@@ -1,0 +1,15 @@
+Name: Sara Ahmed
+
+Education:
+MSc in Information Technology, University of Jyvaskyla
+
+Skills:
+Python, pandas, machine learning, data visualization, SQL basics
+
+Projects:
+- Built a student performance prediction model using Python and scikit-learn
+- Created a dashboard for sales analysis
+
+Experience:
+- Internship in data analysis
+- Worked on cleaning and visualizing tabular datasets
