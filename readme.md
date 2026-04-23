@@ -1,17 +1,5 @@
 # Multi-Agent Job Application Assistant
 
-This project demonstrates two AI agent frameworks:
-
-## Task 10-1: Smolagents
-Single-agent workflow with a custom Python tool for CV keyword analysis.
-
-Features:
-- Match CV skills with job keywords
-- Detect missing skills
-- Generate recruiter-style feedback
-
-## Task 10-2: CrewAI
-Multi-agent workflow using sequential task execution.
 
 Agents:
 1. Job Requirements Researcher
