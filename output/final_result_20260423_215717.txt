@@ -1,0 +1,12 @@
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the Junior Data Analyst position. With an MSc in Information Technology from the University of Jyvaskyla and hands-on experience in data analysis, I am eager to contribute to your team’s mission of deriving actionable insights from complex datasets.
+
+My background includes the practical application of Python, pandas, and scikit-learn to build a student performance prediction model, where I applied machine learning techniques to uncover key risk factors and generate reliable forecasts. Additionally, I developed a sales analysis dashboard that transformed raw transactional data into intuitive visualizations, enabling clearer oversight of business performance and emerging trends. During my internship in data analysis, I refined my expertise in cleaning, structuring, and validating large tabular datasets using Python and SQL, ensuring accuracy and consistency for downstream reporting and analytical workflows.
+
+I am proficient in using Python and SQL to extract, manipulate, and analyze data, and I place strong emphasis on communicating findings clearly. I excel at translating complex technical results into straightforward business recommendations that stakeholders can act upon, bridging the gap between raw data and strategic decision-making.
+
+I would welcome the opportunity to discuss how my technical skills, analytical mindset, and commitment to clear communication can support your team’s objectives. Thank you for your time and consideration.
+
+Sincerely,  
+Sara Ahmed

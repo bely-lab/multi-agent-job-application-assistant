@@ -1,5 +1,6 @@
 import os
 import yaml
+from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
 from openai import OpenAI
@@ -7,16 +8,30 @@ from crewai import Agent, Task, Crew, Process, BaseLLM
 
 
 def read_file(path: str) -> str:
-    with open(path, "r", encoding="utf-8") as f:
-        return f.read()
+    with open(path, "r", encoding="utf-8") as file:
+        return file.read()
 
 
 def load_yaml(path: str) -> dict:
-    with open(path, "r", encoding="utf-8") as f:
-        data = yaml.safe_load(f)
+    with open(path, "r", encoding="utf-8") as file:
+        data = yaml.safe_load(file)
+
     if data is None:
-        raise ValueError(f"{path} is empty or invalid YAML.")
+        raise ValueError(f"{path} is empty or invalid.")
+
     return data
+
+
+def save_output(content: str) -> None:
+    os.makedirs("output", exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    file_path = f"output/final_result_{timestamp}.txt"
+
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(str(content))
+
+    print(f"\nResult saved to {file_path}")
 
 
 class HFRouterLLM(BaseLLM):
@@ -28,19 +43,21 @@ class HFRouterLLM(BaseLLM):
         temperature: float = 0.2,
     ):
         super().__init__(model=model, temperature=temperature)
+
         self.client = OpenAI(
             api_key=api_key,
             base_url=base_url,
         )
 
     def call(
-    self,
-    messages: Union[str, List[Dict[str, str]]],
-    tools: Optional[List[dict]] = None,
-    callbacks: Optional[List[Any]] = None,
-    available_functions: Optional[Dict[str, Any]] = None,
-    **kwargs,
-) -> str:
+        self,
+        messages: Union[str, List[Dict[str, str]]],
+        tools: Optional[List[dict]] = None,
+        callbacks: Optional[List[Any]] = None,
+        available_functions: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ) -> str:
+
         if isinstance(messages, str):
             messages = [{"role": "user", "content": messages}]
 
@@ -54,6 +71,7 @@ class HFRouterLLM(BaseLLM):
             params["tools"] = tools
 
         response = self.client.chat.completions.create(**params)
+
         return response.choices[0].message.content or ""
 
     def supports_function_calling(self) -> bool:
@@ -65,18 +83,17 @@ class HFRouterLLM(BaseLLM):
 
 def build_llm() -> HFRouterLLM:
     api_key = os.getenv("HF_TOKEN")
+
     if not api_key:
         raise ValueError("HF_TOKEN is not set.")
 
-    base_url = "https://router.huggingface.co/v1"
-    model = "moonshotai/Kimi-K2.6:novita"
-
     return HFRouterLLM(
-        model=model,
+        model="moonshotai/Kimi-K2.6:novita",
         api_key=api_key,
-        base_url=base_url,
+        base_url="https://router.huggingface.co/v1",
         temperature=0.2,
     )
+
 
 def build_agent(config: dict, llm: BaseLLM) -> Agent:
     return Agent(
@@ -105,7 +122,7 @@ if __name__ == "__main__":
 
     task1 = Task(
         description=f"""
-{tasks_config['extract_job_requirements']['description']}
+{tasks_config["extract_job_requirements"]["description"]}
 
 Job description:
 {job_text}
@@ -116,7 +133,7 @@ Job description:
 
     task2 = Task(
         description=f"""
-{tasks_config['review_cv_against_job']['description']}
+{tasks_config["review_cv_against_job"]["description"]}
 
 Candidate CV:
 {cv_text}
@@ -131,7 +148,7 @@ Job description:
 
     task3 = Task(
         description=f"""
-{tasks_config['write_cover_letter']['description']}
+{tasks_config["write_cover_letter"]["description"]}
 
 Candidate CV:
 {cv_text}
@@ -155,3 +172,5 @@ Job description:
 
     print("\n=== FINAL CREW RESULT ===\n")
     print(result)
+
+    save_output(result)
