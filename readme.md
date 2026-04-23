@@ -1,4 +1,4 @@
-# CrewAI Job Application Assistant
+## CrewAI Job Application Assistant
 
 A multi-agent AI project built with **CrewAI** and **Hugging Face Router API** for automating parts of the job application process.
 
@@ -10,7 +10,6 @@ The system uses multiple specialized AI agents working sequentially to analyze a
 - Reviews a CV against job requirements
 - Identifies strengths, gaps, and recommendations
 - Generates a customized cover letter
-- Saves final output automatically in an `output/` folder
 
 ## Agents Used
 
@@ -29,10 +28,3 @@ Creates a personalized cover letter based on previous analysis.
 - Smolagents
 - CrewAI
 - Hugging Face Inference API
-
-## Run
-
-```bash
-pip install -r requirements.txt
-python smolagents_app.py
-python crewai_app.py
