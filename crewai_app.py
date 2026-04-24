@@ -170,7 +170,23 @@ Job description:
 
     result = crew.kickoff()
 
-    print("\n=== FINAL CREW RESULT ===\n")
-    print(result)
+final_output = f"""
+TASK 10-2: CREWAI JOB APPLICATION ASSISTANT
 
-    save_output(result)
+1. JOB REQUIREMENTS RESEARCHER OUTPUT
+{task1.output}
+
+2. CV REVIEWER OUTPUT
+{task2.output}
+
+3. COVER LETTER WRITER OUTPUT
+{task3.output}
+
+FINAL CREW RESULT
+{result}
+""".strip()
+
+print("\n=== FINAL CREW RESULT ===\n")
+print(final_output)
+
+save_output(final_output)
