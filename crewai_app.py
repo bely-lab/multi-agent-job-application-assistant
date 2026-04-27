@@ -106,7 +106,7 @@ def build_agent(config: dict, llm: BaseLLM) -> Agent:
 
 
 if __name__ == "__main__":
-    print("Starting Task 10-2 CrewAI Job Application Assistant...")
+    print("Starting CrewAI Job Application Assistant...")
 
     agents_config = load_yaml("agents.yaml")
     tasks_config = load_yaml("tasks.yaml")
