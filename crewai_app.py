@@ -171,7 +171,7 @@ Job description:
     result = crew.kickoff()
 
 final_output = f"""
-TASK 10-2: CREWAI JOB APPLICATION ASSISTANT
+ CREWAI JOB APPLICATION ASSISTANT
 
 1. JOB REQUIREMENTS RESEARCHER OUTPUT
 {task1.output}
